@@ -7,13 +7,13 @@ pipeline {
 		stage("Build") {
 			steps {
 				println("In build step Build");
-				make exec
+				sh 'make exec'
 			}
 		}
 	}
 	post {
 		always {
-			make clean
+			sh 'make clean'
 		}
 	}
 }
