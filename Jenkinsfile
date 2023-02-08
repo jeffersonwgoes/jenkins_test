@@ -6,8 +6,14 @@ pipeline {
 	stages {
 		stage("Build") {
 			steps {
-				println("Build");
+				println("In build step Build");
+				make exec
 			}
+		}
+	}
+	post {
+		always {
+			make clean
 		}
 	}
 }
