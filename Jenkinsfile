@@ -1,22 +1,19 @@
 pipeline {
 	agent any
+	options {
+		timeout(time: 1, unit: 'SECONDS')
+	}
 	stages {
 		stage("Build") {
 			steps {
-				println("Build");
+				println("In build step Build");
+				sh 'make exec'
 			}
 		}
-
-		stage("Test") {
-			steps {
-				println("Test");
-			}
-		}
-
-		stage("Deploy") {
-			steps {
-				println("Deploy");
-			}
+	}
+	post {
+		always {
+			sh 'make clean'
 		}
 	}
 }
